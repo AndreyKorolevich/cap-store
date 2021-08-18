@@ -18,10 +18,6 @@ const itemBasicMapper = item => ({
     images: item.images,
 });
 
-const randomNumber = (start, stop) => {
-    return Math.floor(Math.random() * (stop - start + 1)) + start;
-}
-
 const fortune = (ctx, body = null, status = 200) => {
     const delay = 0;
     return new Promise((resolve, reject) => {
