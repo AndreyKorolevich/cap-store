@@ -8,7 +8,9 @@ const koaBody = require('koa-body');
 const brand = JSON.parse(fs.readFileSync('./data/brand.json'));
 const gender = JSON.parse(fs.readFileSync('./data/gender.json'));
 const items = JSON.parse(fs.readFileSync('./data/products.json'));
-const maxPrice = Math.max(...items.map(i => i.price))
+const maxPrice = {
+    maxPrice: Math.max(...items.map(i => i.price))
+}
 
 const itemBasicMapper = item => ({
     id: item.id,
@@ -62,12 +64,12 @@ router.get('/api/items', async (ctx, next) => {
     const endPage = startPage + countOnPage
 
     const filtered = items
-        .filter(o => brand === 0 || o.brand === brand)
-        .filter(o => gender === 0 || o.gender === gender)
-        .filter(o => o.price <= price)
-        .filter(o => o.title.toLowerCase().includes(q))
-        .slice(startPage, endPage)
-        .map(itemBasicMapper);
+        // .filter(o => brand === 0 || o.brand === brand)
+        // .filter(o => gender === 0 || o.gender === gender)
+        // .filter(o => o.price <= price)
+        // .filter(o => o.title.toLowerCase().includes(q))
+        // .slice(startPage, endPage)
+        //.map(itemBasicMapper);
 
     return fortune(ctx, {filtered, itemsCount: items.length});
 });
