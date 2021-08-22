@@ -10,14 +10,6 @@ const gender = JSON.parse(fs.readFileSync('./data/gender.json'));
 const items = JSON.parse(fs.readFileSync('./data/products.json'));
 const maxPrice = Math.max(...items.map(i => i.price))
 
-const itemBasicMapper = item => ({
-    id: item.id,
-    category: item.category,
-    title: item.title,
-    price: item.price,
-    images: item.images,
-});
-
 const fortune = (ctx, body = null, status = 200) => {
     const delay = 0;
     return new Promise((resolve, reject) => {
@@ -55,9 +47,9 @@ router.get('/api/items', async (ctx, next) => {
 
     const brand = query.brand === undefined ? 0 : Number(query.brand);
     const page = query.page === undefined ? 0 : Number(query.page);
-    const countOnPage = query.countOnPage === undefined ? 10 : Number(query.countOnPage);
+    const countOnPage = query.countOnPage === undefined ? 5 : Number(query.countOnPage);
     const q = query.q === undefined ? '' : query.q.trim().toLowerCase();
-    const gender = query.gender === undefined ? 0 : Number(query.brand);
+    const gender = query.gender === undefined ? 0 : Number(query.gender);
     const price = query.price === undefined ? maxPrice : Number(query.price);
     const color = query.color === undefined ? 0 : Number(query.color);
 
