@@ -1,6 +1,6 @@
 # [Cap Store](https://cap-store.netlify.app/)
 
-Shoe Store using React Hooks, Redux, and more!
+Cap Store using React Hooks, Redux, and more!
 
 ## Built With 🔨
 
