@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBrands, getGenders, setItemsCount, setStoreResults } from '../features/storeManager'
 import axios from 'axios'
@@ -20,7 +20,7 @@ export default function Store(props) {
   const [chosenBrand, setChosenBrand] = useState(brands[0])
   const [chosenGender, setChosenGender] = useState(genders[0])
 
-  const query = useCallback(() => {
+  const query = () => {
     const brand = chosenBrand.name !== 'All' ? `brand=${chosenBrand.value}&` : ''
     const gender = chosenGender.name !== 'All' ? `gender=${chosenGender.value}&` : ''
     const price = chosenPrice !== 0 ? `price=${chosenPrice}&` : ''
@@ -28,7 +28,7 @@ export default function Store(props) {
     const countOnPage = `countOnPage=${capsPerPage}`
 
     return brand + gender + price + page+ countOnPage
-  }, [chosenBrand, chosenGender, chosenPrice, currentPage, capsPerPage])
+  }
 
   const { cart, results } = props
 
@@ -47,7 +47,7 @@ export default function Store(props) {
   useEffect(() => {
     async function getData() {
       const results = await axios.get(
-        `http://localhost:7070/api/items?${query()}`,
+        `http://cap-store.herokuapp.com/api/items?${query()}`,
       )
       return results
     }
@@ -63,11 +63,11 @@ export default function Store(props) {
       })
       .then(() => setTimeout(() => toggleLoading(false), 1500))
       .catch((err) => console.error(err))
-  }, [currentPage, capsPerPage, dispatch, query])
+  }, [currentPage, capsPerPage, dispatch, currentPage, capsPerPage])
 
   useEffect(() => {
     async function getMaxPrice() {
-      const results = await axios.get(`http://localhost:7070/api/maxprice`)
+      const results = await axios.get(`http://cap-store.herokuapp.com/api/maxprice`)
       return results
     }
 
@@ -86,7 +86,7 @@ export default function Store(props) {
   }
 
   const searchStore = async () => {
-    const results = await axios.get(`http://localhost:7070/api/items?${query()}`)
+    const results = await axios.get(`http://cap-store.herokuapp.com/api/items?${query()}`)
     return results
   }
 

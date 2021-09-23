@@ -22,12 +22,12 @@ function App() {
   const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
   useEffect(() => {
     async function getBrands() {
-      const results = await axios.get(`http://localhost:7070/api/categories`)
+      const results = await axios.get(`http://cap-store.herokuapp.com/api/categories`)
       return results
     }
 
     async function getGenders() {
-      const results = await axios.get(`http://localhost:7070/api/gender`)
+      const results = await axios.get(`http://cap-store.herokuapp.com/api/gender`)
       return results
     }
 
