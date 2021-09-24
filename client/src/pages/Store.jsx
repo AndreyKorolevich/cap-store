@@ -47,7 +47,7 @@ export default function Store(props) {
   useEffect(() => {
     async function getData() {
       const results = await axios.get(
-        `http://cap-store.herokuapp.com/api/items?${query()}`,
+        `https://cap-store.herokuapp.com/api/items?${query()}`,
       )
       return results
     }
@@ -67,7 +67,7 @@ export default function Store(props) {
 
   useEffect(() => {
     async function getMaxPrice() {
-      const results = await axios.get(`http://cap-store.herokuapp.com/api/maxprice`)
+      const results = await axios.get(`https://cap-store.herokuapp.com/api/maxprice`)
       return results
     }
 
@@ -86,7 +86,7 @@ export default function Store(props) {
   }
 
   const searchStore = async () => {
-    const results = await axios.get(`http://cap-store.herokuapp.com/api/items?${query()}`)
+    const results = await axios.get(`https://cap-store.herokuapp.com/api/items?${query()}`)
     return results
   }
 
