@@ -26,7 +26,7 @@ Cap Store using React Hooks, Redux, and more!
 
 
 ## Desktop Preview 💻
-
+![Desktop](./assets/cap-store.webp)
 
 ## Mobile Preview 📱
-
+![Mobile](./assets/cap-store-mobile.webp)
